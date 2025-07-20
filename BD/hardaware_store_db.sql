@@ -25,6 +25,7 @@ CREATE TABLE IF NOT EXISTS `article` (
   `name` varchar(100) NOT NULL,
   `code` varchar(50) NOT NULL,
   `quantity` int NOT NULL DEFAULT '0',
+  `price` decimal(10,2) NOT NULL,
   `id_category` int NOT NULL,
   `id_unit` int NOT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
@@ -41,17 +42,17 @@ CREATE TABLE IF NOT EXISTS `article` (
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Volcando datos para la tabla hardware_store_db.article: ~10 rows (aproximadamente)
-INSERT INTO `article` (`id_article`, `name`, `code`, `quantity`, `id_category`, `id_unit`, `created_at`, `updated_at`) VALUES
-	(1, 'Martillo 16oz', 'ART-1001', 50, 1, 1, '2025-07-17 16:53:09', '2025-07-17 16:53:09'),
-	(2, 'Destornillador Plano', 'ART-1002', 30, 1, 1, '2025-07-17 16:53:09', '2025-07-17 16:53:09'),
-	(3, 'Pinza de Corte', 'ART-1003', 25, 1, 1, '2025-07-17 16:53:09', '2025-07-17 16:53:09'),
-	(4, 'Tornillo 3x20mm', 'ART-1004', 1000, 2, 1, '2025-07-17 16:53:09', '2025-07-17 16:53:09'),
-	(5, 'Tuerca 1/4"', 'ART-1005', 800, 2, 1, '2025-07-17 16:53:09', '2025-07-17 16:53:09'),
-	(6, 'Cable Eléctrico 2.5mm', 'ART-1006', 200, 3, 3, '2025-07-17 16:53:09', '2025-07-17 16:53:09'),
-	(7, 'Llave Inglesa', 'ART-1007', 15, 1, 1, '2025-07-17 16:53:09', '2025-07-17 16:53:09'),
-	(8, 'Pintura Blanca 1L', 'ART-1008', 40, 5, 4, '2025-07-17 16:53:09', '2025-07-17 16:53:09'),
-	(9, 'Brocha 2"', 'ART-1009', 20, 5, 1, '2025-07-17 16:53:09', '2025-07-17 16:53:09'),
-	(10, 'Cemento 50kg', 'ART-1010', 10, 9, 2, '2025-07-17 16:53:09', '2025-07-17 16:53:09');
+INSERT INTO `article` (`id_article`, `name`, `code`, `quantity`, `price`, `id_category`, `id_unit`, `created_at`, `updated_at`) VALUES
+	(1, 'Martillo 16oz', 'ART-1001', 50, 0.00, 1, 1, '2025-07-17 16:53:09', '2025-07-17 16:53:09'),
+	(2, 'Destornillador Plano', 'ART-1002', 30, 0.00, 1, 1, '2025-07-17 16:53:09', '2025-07-17 16:53:09'),
+	(3, 'Pinza de Corte', 'ART-1003', 25, 0.00, 1, 1, '2025-07-17 16:53:09', '2025-07-17 16:53:09'),
+	(4, 'Tornillo 3x20mm', 'ART-1004', 1000, 0.00, 2, 1, '2025-07-17 16:53:09', '2025-07-17 16:53:09'),
+	(5, 'Tuerca 1/4"', 'ART-1005', 800, 0.00, 2, 1, '2025-07-17 16:53:09', '2025-07-17 16:53:09'),
+	(6, 'Cable Eléctrico 2.5mm', 'ART-1006', 200, 0.00, 3, 3, '2025-07-17 16:53:09', '2025-07-17 16:53:09'),
+	(7, 'Llave Inglesa', 'ART-1007', 15, 0.00, 1, 1, '2025-07-17 16:53:09', '2025-07-17 16:53:09'),
+	(8, 'Pintura Blanca 1L', 'ART-1008', 40, 0.00, 5, 4, '2025-07-17 16:53:09', '2025-07-17 16:53:09'),
+	(9, 'Brocha 2"', 'ART-1009', 20, 0.00, 5, 1, '2025-07-17 16:53:09', '2025-07-17 16:53:09'),
+	(10, 'Cemento 50kg', 'ART-1010', 10, 0.00, 9, 2, '2025-07-17 16:53:09', '2025-07-17 16:53:09');
 
 -- Volcando estructura para tabla hardware_store_db.article_supplier
 CREATE TABLE IF NOT EXISTS `article_supplier` (
@@ -158,9 +159,9 @@ CREATE TABLE IF NOT EXISTS `employee` (
   KEY `id_role` (`id_role`),
   KEY `idx_employee_user` (`user`),
   CONSTRAINT `employee_ibfk_1` FOREIGN KEY (`id_role`) REFERENCES `role` (`id_role`) ON DELETE RESTRICT ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Volcando datos para la tabla hardware_store_db.employee: ~1 rows (aproximadamente)
+-- Volcando datos para la tabla hardware_store_db.employee: ~11 rows (aproximadamente)
 INSERT INTO `employee` (`id_employee`, `name`, `user`, `password`, `id_role`, `created_at`, `updated_at`) VALUES
 	(1, 'Administrador', 'admin', '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', 1, '2025-07-17 16:46:35', '2025-07-17 16:46:35'),
 	(2, 'Juan Pérez', 'jperez', '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', 2, '2025-07-17 16:53:09', '2025-07-17 16:53:09'),
@@ -173,6 +174,20 @@ INSERT INTO `employee` (`id_employee`, `name`, `user`, `password`, `id_role`, `c
 	(9, 'Laura Fernández', 'lfernandez', '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', 8, '2025-07-17 16:53:09', '2025-07-17 16:53:09'),
 	(10, 'Jorge Ramírez', 'jramirez', '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', 9, '2025-07-17 16:53:09', '2025-07-17 16:53:09'),
 	(11, 'Mónica Díaz', 'mdiaz', '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', 10, '2025-07-17 16:53:09', '2025-07-17 16:53:09');
+
+-- Volcando estructura para tabla hardware_store_db.entry
+CREATE TABLE IF NOT EXISTS `entry` (
+  `id_entry` int NOT NULL,
+  `date_entry` date NOT NULL,
+  `quantity` int NOT NULL,
+  `observations` varchar(100) NOT NULL,
+  `id_article` int NOT NULL,
+  PRIMARY KEY (`id_entry`),
+  KEY `FK_entry_article` (`id_article`),
+  CONSTRAINT `FK_entry_article` FOREIGN KEY (`id_article`) REFERENCES `article` (`id_article`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Tabla para registrar entradas del inventario';
+
+-- Volcando datos para la tabla hardware_store_db.entry: ~0 rows (aproximadamente)
 
 -- Volcando estructura para tabla hardware_store_db.inventory
 CREATE TABLE IF NOT EXISTS `inventory` (
@@ -206,6 +221,28 @@ INSERT INTO `inventory` (`id_inventory`, `current_stock`, `minimum_stock`, `id_a
 	(8, 20, 5, 8, 4, '2023-01-15', '2025-07-17 16:53:09', '2025-07-17 16:53:09'),
 	(9, 15, 3, 9, 4, '2023-01-15', '2025-07-17 16:53:09', '2025-07-17 16:53:09'),
 	(10, 8, 2, 10, 5, '2023-01-15', '2025-07-17 16:53:09', '2025-07-17 16:53:09');
+
+-- Volcando estructura para tabla hardware_store_db.issue
+CREATE TABLE IF NOT EXISTS `issue` (
+  `id_issue` bigint NOT NULL,
+  `date_issue` date NOT NULL,
+  `quantity` int NOT NULL,
+  `observations` varchar(100) DEFAULT NULL,
+  `id_article` int NOT NULL DEFAULT (0),
+  `id_employee` bigint NOT NULL,
+  `id_client` bigint NOT NULL,
+  `created_at` timestamp NOT NULL,
+  `updated_at` timestamp NOT NULL,
+  PRIMARY KEY (`id_issue`),
+  KEY `FK_issue_article` (`id_article`),
+  KEY `FK_issue_employee` (`id_employee`),
+  KEY `FK_issue_client` (`id_client`),
+  CONSTRAINT `FK_issue_article` FOREIGN KEY (`id_article`) REFERENCES `article` (`id_article`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_issue_client` FOREIGN KEY (`id_client`) REFERENCES `client` (`id_client`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_issue_employee` FOREIGN KEY (`id_employee`) REFERENCES `employee` (`id_employee`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Tabla para registrar movimientos de salida del inventario';
+
+-- Volcando datos para la tabla hardware_store_db.issue: ~0 rows (aproximadamente)
 
 -- Volcando estructura para tabla hardware_store_db.location
 CREATE TABLE IF NOT EXISTS `location` (
@@ -371,7 +408,7 @@ CREATE TABLE IF NOT EXISTS `role` (
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_role`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Volcando datos para la tabla hardware_store_db.role: ~14 rows (aproximadamente)
 INSERT INTO `role` (`id_role`, `name`, `created_at`, `updated_at`) VALUES
@@ -395,7 +432,6 @@ CREATE TABLE IF NOT EXISTS `sale` (
   `id_sale` bigint NOT NULL AUTO_INCREMENT,
   `date` date NOT NULL,
   `total` decimal(10,2) NOT NULL,
-  `payment_method` varchar(20) NOT NULL,
   `id_client` bigint NOT NULL,
   `id_employee` bigint NOT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
@@ -406,22 +442,21 @@ CREATE TABLE IF NOT EXISTS `sale` (
   KEY `idx_sale_employee` (`id_employee`),
   CONSTRAINT `sale_ibfk_1` FOREIGN KEY (`id_client`) REFERENCES `client` (`id_client`) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT `sale_ibfk_2` FOREIGN KEY (`id_employee`) REFERENCES `employee` (`id_employee`) ON DELETE RESTRICT ON UPDATE CASCADE,
-  CONSTRAINT `sale_chk_1` CHECK ((`total` > 0)),
-  CONSTRAINT `sale_chk_2` CHECK ((`payment_method` in (_utf8mb4'EFECTIVO',_utf8mb4'TARJETA_CREDITO',_utf8mb4'TARJETA_DEBITO',_utf8mb4'TRANSFERENCIA',_utf8mb4'COMPROBADO')))
+  CONSTRAINT `sale_chk_1` CHECK ((`total` > 0))
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Volcando datos para la tabla hardware_store_db.sale: ~10 rows (aproximadamente)
-INSERT INTO `sale` (`id_sale`, `date`, `total`, `payment_method`, `id_client`, `id_employee`, `created_at`, `updated_at`) VALUES
-	(1, '2023-01-11', 35.98, 'EFECTIVO', 1, 2, '2025-07-17 17:10:28', '2025-07-17 17:10:28'),
-	(2, '2023-01-12', 25.50, 'EFECTIVO', 2, 2, '2025-07-17 17:10:28', '2025-07-17 17:10:28'),
-	(3, '2023-01-13', 38.25, 'EFECTIVO', 3, 2, '2025-07-17 17:10:28', '2025-07-17 17:10:28'),
-	(4, '2023-01-14', 5.00, 'EFECTIVO', 4, 2, '2025-07-17 17:10:28', '2025-07-17 17:10:28'),
-	(5, '2023-01-15', 3.00, 'EFECTIVO', 5, 2, '2025-07-17 17:10:28', '2025-07-17 17:10:28'),
-	(6, '2023-01-16', 12.80, 'EFECTIVO', 6, 2, '2025-07-17 17:10:28', '2025-07-17 17:10:28'),
-	(7, '2023-01-17', 36.60, 'EFECTIVO', 7, 2, '2025-07-17 17:10:28', '2025-07-17 17:10:28'),
-	(8, '2023-01-18', 15.60, 'EFECTIVO', 8, 2, '2025-07-17 17:10:28', '2025-07-17 17:10:28'),
-	(9, '2023-01-19', 8.50, 'EFECTIVO', 9, 2, '2025-07-17 17:10:28', '2025-07-17 17:10:28'),
-	(10, '2023-01-20', 25.00, 'EFECTIVO', 10, 2, '2025-07-17 17:10:28', '2025-07-17 17:10:28');
+INSERT INTO `sale` (`id_sale`, `date`, `total`, `id_client`, `id_employee`, `created_at`, `updated_at`) VALUES
+	(1, '2023-01-11', 35.98, 1, 2, '2025-07-17 17:10:28', '2025-07-17 17:10:28'),
+	(2, '2023-01-12', 25.50, 2, 2, '2025-07-17 17:10:28', '2025-07-17 17:10:28'),
+	(3, '2023-01-13', 38.25, 3, 2, '2025-07-17 17:10:28', '2025-07-17 17:10:28'),
+	(4, '2023-01-14', 5.00, 4, 2, '2025-07-17 17:10:28', '2025-07-17 17:10:28'),
+	(5, '2023-01-15', 3.00, 5, 2, '2025-07-17 17:10:28', '2025-07-17 17:10:28'),
+	(6, '2023-01-16', 12.80, 6, 2, '2025-07-17 17:10:28', '2025-07-17 17:10:28'),
+	(7, '2023-01-17', 36.60, 7, 2, '2025-07-17 17:10:28', '2025-07-17 17:10:28'),
+	(8, '2023-01-18', 15.60, 8, 2, '2025-07-17 17:10:28', '2025-07-17 17:10:28'),
+	(9, '2023-01-19', 8.50, 9, 2, '2025-07-17 17:10:28', '2025-07-17 17:10:28'),
+	(10, '2023-01-20', 25.00, 10, 2, '2025-07-17 17:10:28', '2025-07-17 17:10:28');
 
 -- Volcando estructura para tabla hardware_store_db.sale_detail
 CREATE TABLE IF NOT EXISTS `sale_detail` (

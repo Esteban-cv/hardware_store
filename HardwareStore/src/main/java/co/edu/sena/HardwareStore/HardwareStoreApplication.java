@@ -1,4 +1,4 @@
-package com.sena.edu.co.Hardware_store;
+package co.edu.sena.HardwareStore;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

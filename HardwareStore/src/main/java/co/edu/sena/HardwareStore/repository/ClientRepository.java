@@ -1,4 +1,7 @@
 package co.edu.sena.HardwareStore.repository;
 
-public interface ClientRepository {
+import co.edu.sena.HardwareStore.model.Client;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ClientRepository extends JpaRepository<Client,Long> {
 }
